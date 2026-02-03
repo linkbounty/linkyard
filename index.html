@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta name="google-site-verification" content="dan0NO_tP7L1QPv_0gbNPQJ7kQwGn7n0i1FAHYdhSH8" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links Hub - Aapke Sabhi Links Ek Jagah</title>
+    <!-- Global Error Handler -->
+    <script>
+        window.onerror = function (msg, url, line, col, error) {
+            // Create container if not exists
+            let consoleDiv = document.getElementById('error-console');
+            if (!consoleDiv) {
+                consoleDiv = document.createElement('div');
+                consoleDiv.id = 'error-console';
+                consoleDiv.style.cssText = 'position:fixed;top:0;left:0;width:100%;background:rgba(150,0,0,0.95);color:white;padding:15px;z-index:99999;font-family:monospace;font-size:14px;overflow:auto;max-height:200px;';
+                document.body.appendChild(consoleDiv); // Append to body (might be null if in head early, but will work when body loads?)
+                // Actually if body is not ready, document.documentElement.appendChild
+                if (!document.body) document.documentElement.appendChild(consoleDiv);
+                else document.body.appendChild(consoleDiv);
+            }
+            consoleDiv.innerHTML += `<div><strong>Error:</strong> ${msg} <br><span style="opacity:0.8">Line: ${line}</span></div>`;
+            return false;
+        };
+    </script>
+    <link rel="icon" type="image/jpeg" href="favicon.jpg">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS File -->
+    <style>
+        body {
+            background-color: #111827;
+            /* Dark gray-blue background */
+            font-family: 'Inter', sans-serif;
+        }
+
+        .header-title {
+            text-shadow: 0 0 15px rgba(59, 130, 246, 0.5), 0 0 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .card {
+            background-color: rgba(31, 41, 55, 0.7);
+            /* Semi-transparent card background */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .ad-space {
+            background: linear-gradient(90deg, rgba(31, 41, 55, 0.7), rgba(59, 130, 246, 0.3));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #animation-container {
+            background: linear-gradient(-45deg, #0f172a, #1e3a8a, #3b82f6, #1d4ed8);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Accessibility class to hide text from screen but not from screen readers */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gray-900 text-white font-sans antialiased min-h-screen relative selection:bg-pink-500 selection:text-white">
+    <!-- 4K Anime/Cartoon Background Image -->
+    <div class="fixed inset-0 z-[-1]">
+        <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=3872&auto=format&fit=crop"
+            alt="Background" class="w-full h-full object-cover opacity-70">
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-gray-900/40 via-gray-900/10 to-gray-900/90 mix-blend-multiply">
+        </div>
+    </div>
+
+    <!-- Header Section (Resized Search Bar, aligned Right) -->
+    <header class="py-6 relative z-10">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-center md:text-left">
+                <h1 class="header-title text-4xl md:text-5xl font-bold text-white">Links Hub</h1>
+                <p class="text-white/90 mt-1 text-base">Aapke sabhi zaroori links ek hi jagah par.</p>
+            </div>
+
+            <!-- Compact Omni-Search Bar (Right Side) -->
+            <div class="relative group w-full max-w-sm">
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-40 group-hover:opacity-80 transition duration-500">
+                </div>
+                <input type="text" id="searchInput" placeholder="Search..."
+                    class="relative w-full px-5 py-2.5 bg-gray-900/60 backdrop-blur-xl text-white rounded-full border border-white/20 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-base shadow-lg transition-all placeholder-gray-300">
+                <i
+                    class="fas fa-search absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-300 group-hover:text-blue-300 transition-colors pointer-events-none"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="container mx-auto px-6 py-8">
+
+
+
+        <!-- 
+          Grid container for all categories 
+        -->
+        <div id="links-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Categories will be rendered here via JS -->
+        </div>
+
+        <!-- Links Modal Overlay -->
+        <div id="links-modal"
+            class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 transition-all duration-300 opacity-0 pointer-events-none">
+            <div class="bg-gray-900 w-full max-w-6xl max-h-[85vh] rounded-2xl border border-white/10 shadow-2xl flex flex-col transform scale-95 transition-transform duration-300"
+                id="modal-content">
+                <div
+                    class="px-6 py-4 border-b border-white/10 flex justify-between items-center bg-gray-800/50 rounded-t-2xl">
+                    <h3 id="modal-title" class="text-2xl font-bold text-white flex items-center"></h3>
+                    <button onclick="closeModal()"
+                        class="text-white/60 hover:text-white hover:bg-white/10 p-2 rounded-full transition-colors w-10 h-10 flex items-center justify-center"><i
+                            class="fas fa-times text-xl"></i></button>
+                </div>
+                <div class="p-6 overflow-y-auto custom-scrollbar flex-1">
+                    <ul id="modal-links-list"
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <!-- Links injected here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="mt-12 py-6 border-t border-white/20">
+        <div class="container mx-auto px-6 text-center text-white/80">
+            <p class="mb-2">
+                Contact me: <a href="mailto:goravvishwakarma449@gmail.com"
+                    class="font-semibold hover:text-white hover:underline">goravvishwakarma449@gmail.com</a>
+            </p>
+            <p>&copy; 2024 Links Hub. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ====================================================== -->
+    <!-- JAVASCRIPT SECTION -->
+    <!-- ====================================================== -->
+    <script src="data.js"></script>
+    <script src="custom_links.js"></script>
+    <script>
+        // --- 1. SMART ICON GENERATOR (COLORFUL APP STYLE) ---
+        // Yeh function ab icon class ke saath-saath background color bhi return karega
+        function getSmartIcon(name) {
+            const n = name.toLowerCase();
+            let icon = 'fas fa-link';
+            let bg = 'bg-gray-600'; // Default color
+
+            // --- AI Chatbots & Writing (Cool Blues, Teals, Purples) ---
+            if (n.includes('chatgpt')) { icon = 'fas fa-robot'; bg = 'bg-teal-600'; }
+            else if (n.includes('claude')) { icon = 'fas fa-brain'; bg = 'bg-orange-600'; }
+            else if (n.includes('gemini') || n.includes('google')) { icon = 'fab fa-google'; bg = 'bg-blue-600'; }
+            else if (n.includes('copilot') || n.includes('microsoft')) { icon = 'fab fa-microsoft'; bg = 'bg-sky-600'; }
+            else if (n.includes('jasper') || n.includes('copy')) { icon = 'fas fa-pen-nib'; bg = 'bg-purple-600'; }
+            else if (n.includes('quillbot')) { icon = 'fas fa-feather-alt'; bg = 'bg-green-500'; }
+            else if (n.includes('sonic') || n.includes('rytr')) { icon = 'fas fa-bolt'; bg = 'bg-violet-600'; }
+            else if (n.includes('novel') || n.includes('story')) { icon = 'fas fa-book-open'; bg = 'bg-indigo-600'; }
+            else if (n.includes('detect') || n.includes('check')) { icon = 'fas fa-search'; bg = 'bg-slate-600'; }
+
+            // --- Image & Design (Vibrant Pinks, Oranges, Gradients implied by solid color) ---
+            else if (n.includes('midjourney')) { icon = 'fas fa-ship'; bg = 'bg-slate-800'; }
+            else if (n.includes('dall-e')) { icon = 'fas fa-paint-brush'; bg = 'bg-yellow-600'; }
+            else if (n.includes('stable diffusion')) { icon = 'fas fa-image'; bg = 'bg-emerald-600'; }
+            else if (n.includes('canva')) { icon = 'fas fa-palette'; bg = 'bg-blue-500'; }
+            else if (n.includes('adobe') || n.includes('firefly')) { icon = 'fas fa-fire'; bg = 'bg-red-600'; }
+            else if (n.includes('remove') || n.includes('erase')) { icon = 'fas fa-eraser'; bg = 'bg-rose-500'; }
+            else if (n.includes('art') || n.includes('draw')) { icon = 'fas fa-pencil-alt'; bg = 'bg-pink-500'; }
+
+            // --- Video & Audio (Reds, Pinks) ---
+            else if (n.includes('youtube')) { icon = 'fab fa-youtube'; bg = 'bg-red-600'; }
+            else if (n.includes('video') || n.includes('runway') || n.includes('pika')) { icon = 'fas fa-video'; bg = 'bg-rose-600'; }
+            else if (n.includes('music') || n.includes('audio') || n.includes('sound')) { icon = 'fas fa-music'; bg = 'bg-fuchsia-600'; }
+            else if (n.includes('voice') || n.includes('speech')) { icon = 'fas fa-microphone'; bg = 'bg-orange-500'; }
+
+            // --- Coding & Dev (Dark, Blues, Greens) ---
+            else if (n.includes('github') || n.includes('git')) { icon = 'fab fa-github'; bg = 'bg-gray-800'; }
+            else if (n.includes('python')) { icon = 'fab fa-python'; bg = 'bg-sky-700'; }
+            else if (n.includes('code') || n.includes('dev')) { icon = 'fas fa-code'; bg = 'bg-green-600'; }
+            else if (n.includes('hugging')) { icon = 'fas fa-smile'; bg = 'bg-yellow-500'; }
+            else if (n.includes('data') || n.includes('excel')) { icon = 'fas fa-table'; bg = 'bg-green-700'; }
+
+            // --- Tools (SeoStudio etc) ---
+            else if (n.includes('calculator')) { icon = 'fas fa-calculator'; bg = 'bg-orange-500'; }
+            else if (n.includes('converter')) { icon = 'fas fa-exchange-alt'; bg = 'bg-cyan-600'; }
+            else if (n.includes('generator')) { icon = 'fas fa-magic'; bg = 'bg-purple-500'; }
+            else if (n.includes('seo') || n.includes('rank')) { icon = 'fas fa-chart-line'; bg = 'bg-blue-600'; }
+            else if (n.includes('domain') || n.includes('ip')) { icon = 'fas fa-globe'; bg = 'bg-indigo-500'; }
+            else if (n.includes('text') || n.includes('word')) { icon = 'fas fa-font'; bg = 'bg-slate-500'; }
+            else if (n.includes('pdf')) { icon = 'fas fa-file-pdf'; bg = 'bg-red-500'; }
+            else if (n.includes('social') || n.includes('twitter')) { icon = 'fas fa-share-alt'; bg = 'bg-sky-500'; }
+            else if (n.includes('email') || n.includes('mail')) { icon = 'fas fa-envelope'; bg = 'bg-yellow-500'; }
+
+            // Generic Fallbacks based on category keywords
+            else if (n.includes('ai')) { icon = 'fas fa-robot'; bg = 'bg-indigo-500'; }
+            else { icon = 'fas fa-external-link-alt'; bg = 'bg-blue-500'; }
+
+            return { icon, bg };
+        }
+
+        // --- 2. DATA ---
+        // linkData is now loaded from data.js to improve performance
+        if (typeof linkData === 'undefined') {
+            console.error('Error: linkData not loaded. Make sure data.js is in the same directory.');
+            document.body.innerHTML += '<div style="color:red; text-align:center; padding:20px;">Error: data.js not found.</div>';
+        }
+
+        // --- 3. RENDER LOGIC (Optimized Categories + Modal) ---
+        // Ensure elements exist before assigning
+        let gridContainer, modal, modalTitleElement, modalListElement, modalContentElement;
+
+        function initializeElements() {
+            gridContainer = document.getElementById('links-grid');
+            modal = document.getElementById('links-modal');
+            modalTitleElement = document.getElementById('modal-title');
+            modalListElement = document.getElementById('modal-links-list');
+            modalContentElement = document.getElementById('modal-content');
+
+            // Add Event Listener safely (Ensures modal exists)
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+            }
+
+            if (!gridContainer) console.error("Grid Container not found!");
+        }
+
+        // Render Categories ONLY (Fast)
+        function renderCategories() {
+            if (!gridContainer) initializeElements();
+            if (!gridContainer) return; // Still not found
+
+            gridContainer.innerHTML = '';
+            if (!linkData) {
+                gridContainer.innerHTML = '<div class="col-span-full text-center text-red-400">Error: No Data Found</div>';
+                return;
+            }
+
+            linkData.forEach(category => {
+                const card = document.createElement('div');
+                // Glassmorphism Card Style
+                card.className = 'card rounded-2xl p-6 cursor-pointer group transition-all duration-300 flex flex-col items-center justify-center text-center h-64 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-blue-500/20 relative overflow-hidden ring-1 ring-white/5';
+                card.onclick = () => openModal(category);
+
+                // Reflection/Shine effect
+                const shine = document.createElement('div');
+                shine.className = 'absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none';
+                card.appendChild(shine);
+
+                // Glow effect
+                const glow = document.createElement('div');
+                glow.className = 'absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500 -z-10';
+                card.appendChild(glow);
+
+                // Calculate Color for 3D Effect
+                const colorMap = {
+                    // Pinks & Reds
+                    'text-pink-400': 'from-pink-500 to-pink-700 shadow-pink-500/40 ring-pink-400/30',
+                    'text-pink-500': 'from-pink-500 to-pink-700 shadow-pink-500/50',
+                    'text-rose-400': 'from-rose-400 to-rose-600 shadow-rose-500/50',
+                    'text-red-400': 'from-red-400 to-red-600 shadow-red-500/50',
+                    'text-red-500': 'from-red-500 to-red-700 shadow-red-500/50',
+                    'text-red-600': 'from-red-600 to-red-800 shadow-red-500/50',
+
+                    // Oranges & Yellows
+                    'text-orange-400': 'from-orange-400 to-orange-600 shadow-orange-500/50',
+                    'text-orange-300': 'from-orange-300 to-orange-500 shadow-orange-500/50',
+                    'text-amber-400': 'from-amber-400 to-amber-600 shadow-amber-500/50',
+                    'text-yellow-400': 'from-yellow-300 to-yellow-500 shadow-yellow-500/50',
+                    'text-yellow-500': 'from-yellow-500 to-yellow-700 shadow-yellow-500/50',
+                    'text-yellow-600': 'from-yellow-400 to-yellow-600 shadow-yellow-500/50',
+
+                    // Greens & Teals
+                    'text-lime-400': 'from-lime-400 to-lime-600 shadow-lime-500/50',
+                    'text-green-400': 'from-green-400 to-green-600 shadow-green-500/50',
+                    'text-green-500': 'from-green-400 to-green-600 shadow-green-500/50',
+                    'text-green-600': 'from-green-500 to-green-700 shadow-green-500/50',
+                    'text-emerald-400': 'from-emerald-400 to-emerald-600 shadow-emerald-500/50',
+                    'text-teal-400': 'from-teal-400 to-teal-600 shadow-teal-500/50',
+
+                    // Blues & Cyans
+                    'text-cyan-400': 'from-cyan-400 to-cyan-600 shadow-cyan-500/50',
+                    'text-sky-400': 'from-sky-400 to-sky-600 shadow-sky-500/50',
+                    'text-blue-400': 'from-blue-400 to-blue-600 shadow-blue-500/50', // Default
+                    'text-blue-500': 'from-blue-400 to-blue-600 shadow-blue-500/50',
+
+                    // Purples & Indigos
+                    'text-indigo-400': 'from-indigo-400 to-indigo-600 shadow-indigo-500/50',
+                    'text-purple-400': 'from-purple-400 to-purple-600 shadow-purple-500/50',
+                    'text-fuchsia-400': 'from-fuchsia-400 to-fuchsia-600 shadow-fuchsia-500/50',
+
+                    // Grays
+                    'text-gray-400': 'from-gray-500 to-gray-700 shadow-gray-500/50',
+                    'text-slate-400': 'from-slate-400 to-slate-600 shadow-slate-500/50',
+                };
+
+                // Fallback or exact match
+                let gradientClass = colorMap[category.iconColor] || 'from-blue-400 to-blue-600 shadow-blue-500/50';
+
+                // Realistic 3D Icon Container
+                const iconDiv = document.createElement('div');
+                iconDiv.className = `w-20 h-20 rounded-2xl mb-5 flex items-center justify-center bg-gradient-to-br ${gradientClass} shadow-xl ring-1 group-hover:scale-110 transition-all duration-300 z-10 group-hover:-translate-y-2 group-hover:rotate-3 relative`;
+
+                // Inner highlight for glossy look
+                const innerShine = document.createElement('div');
+                innerShine.className = 'absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/20 to-transparent rounded-t-2xl pointer-events-none';
+                iconDiv.appendChild(innerShine);
+
+                // Realistic 3D Icon Rendering
+                const isFontAwesome = category.icon.includes('fa-');
+                let iconHtml;
+                if (isFontAwesome) {
+                    iconHtml = `<i class="${category.icon} text-4xl text-white drop-shadow-lg group-hover:scale-125 transition-transform duration-300"></i>`;
+                } else {
+                    // Emoji / Text Icon (Huge 3D Effect)
+                    iconHtml = `<span class="text-6xl drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] group-hover:scale-125 transition-transform duration-300 filter">${category.icon}</span>`;
+                }
+
+                // Wrapper for icon
+                const iconWrapper = document.createElement('div');
+                iconWrapper.className = 'z-10 flex items-center justify-center w-full h-full';
+                iconWrapper.innerHTML = iconHtml;
+                iconDiv.appendChild(iconWrapper);
+
+                const title = document.createElement('h3');
+                title.className = 'text-lg font-bold text-white group-hover:text-blue-200 transition-all duration-300 z-10 group-hover:-translate-y-1 tracking-wide mt-3';
+                title.textContent = category.title;
+
+                const count = document.createElement('span');
+                count.className = 'text-xs font-medium text-gray-400 mt-1 z-10 transition-opacity duration-300 group-hover:opacity-0 bg-gray-800/50 px-3 py-1 rounded-full border border-white/5';
+
+                let totalLinks = (category.links ? category.links.length : 0);
+                if (category.subcategories) {
+                    category.subcategories.forEach(sub => totalLinks += (sub.links ? sub.links.length : 0));
+                }
+                count.textContent = `${totalLinks} Links`;
+
+                const desc = document.createElement('p');
+                desc.className = 'absolute bottom-0 left-0 right-0 p-4 text-sm font-medium text-white bg-black/80 backdrop-blur-md transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-center border-t border-white/10 z-20';
+                desc.textContent = category.description || "Explore this category";
+
+                card.appendChild(iconDiv);
+                card.appendChild(title);
+                card.appendChild(count);
+                card.appendChild(desc);
+
+                gridContainer.appendChild(card);
+            });
+        }
+
+
+        // Open Modal
+        function openModal(category) {
+            if (!modal) initializeElements();
+            modalTitleElement.innerHTML = `<i class="${category.icon} ${category.iconColor} mr-3"></i> ${category.title}`;
+            modalListElement.innerHTML = ''; // Clear previous
+
+            // Render Main Links
+            if (category.links && category.links.length > 0) {
+                renderLinksList(category.links, modalListElement);
+            }
+
+            // Render Subcategories
+            if (category.subcategories && category.subcategories.length > 0) {
+                category.subcategories.forEach(sub => {
+                    const subHeader = document.createElement('li');
+                    subHeader.className = 'col-span-full text-lg font-semibold text-gray-300 mt-6 mb-3 border-b border-gray-700 pb-2 flex items-center';
+                    if (sub.icon) {
+                        subHeader.innerHTML = `<i class="${sub.icon} mr-2"></i> ${sub.title}`;
+                    } else {
+                        subHeader.textContent = sub.title;
+                    }
+                    modalListElement.appendChild(subHeader);
+                    renderLinksList(sub.links, modalListElement);
+                });
+            }
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modalContentElement.classList.remove('scale-95');
+                modalContentElement.classList.add('scale-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Helper to Render Links inside Modal
+        function renderLinksList(links, container) {
+            if (!links) return;
+            links.forEach(link => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = link.url;
+                a.target = '_blank';
+                a.className = `flex items-center p-3 rounded-lg bg-gray-800/50 hover:bg-gray-700 transition-colors border border-white/5 hover:border-blue-500/30 group`;
+
+                let iconHTML = '';
+                // Logic reused from original code
+                if (link.url.includes('seostudio.tools') ||
+                    link.url.includes('aixploria.com') ||
+                    link.name.toLowerCase().includes('calculator') ||
+                    link.name.toLowerCase().includes('converter') ||
+                    link.name.toLowerCase().includes('generator')) {
+
+                    const { icon: iconClass, bg: bgClass } = getSmartIcon(link.name);
+                    iconHTML = `<div class="w-8 h-8 mr-3 flex-shrink-0 flex items-center justify-center ${bgClass} rounded-md shadow-sm"><i class="${iconClass} text-sm text-white"></i></div>`;
+                } else {
+                    // Favicon
+                    let domain = 'google.com';
+                    try { domain = new URL(link.url).hostname; } catch (e) { }
+                    const faviconUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+                    iconHTML = `<div class="w-8 h-8 mr-3 flex-shrink-0 flex items-center justify-center bg-white/10 rounded-md overflow-hidden"><img src="${faviconUrl}" class="w-full h-full object-cover" loading="lazy" onerror="this.parentElement.innerHTML='<i class=\\'fas fa-link text-white/50\\'></i>'"></div>`;
+                }
+
+                a.innerHTML = `${iconHTML}<span class="truncate font-medium text-gray-200 group-hover:text-white transition-colors flex-1">${link.name}</span> <i class="fas fa-external-link-alt text-xs text-white/20 group-hover:text-white/60 ml-2"></i>`;
+                li.appendChild(a);
+                container.appendChild(li);
+            });
+        }
+
+        window.closeModal = function () {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContentElement.classList.remove('scale-100');
+            modalContentElement.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+
+
+        // Initialize
+        const searchInput = document.getElementById('searchInput');
+
+
+        // Enhanced Render Logic with Safety Check
+        function initApp() {
+            console.log("initApp called");
+            // Retry up to 10 times (1 second) if data is missing
+            if (typeof linkData !== 'undefined' && linkData) {
+                renderCategories();
+            } else {
+                console.warn("linkData not ready, retrying...");
+                setTimeout(initApp, 100);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
+
+        // Search Functionality
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+
+            if (query === '') {
+                renderCategories();
+                return;
+            }
+
+            const filteredCategories = [];
+            const directLinks = [];
+
+            if (!linkData) return;
+
+            linkData.forEach(category => {
+                // Check Category Title
+                if (category.title.toLowerCase().includes(query)) {
+                    filteredCategories.push(category);
+                }
+
+                // Check Links
+                if (category.links) {
+                    category.links.forEach(link => {
+                        if (link.name.toLowerCase().includes(query)) {
+                            directLinks.push({ ...link, category: category.title, icon: category.icon, color: category.iconColor });
+                        }
+                    });
+                }
+
+                // Check Subcategories
+                if (category.subcategories) {
+                    category.subcategories.forEach(sub => {
+                        if (sub.title && sub.title.toLowerCase().includes(query)) {
+                            // Add parent as result but maybe highlight sub? simpler to just show parent.
+                            if (!filteredCategories.includes(category)) filteredCategories.push(category);
+                        }
+                        if (sub.links) {
+                            sub.links.forEach(link => {
+                                if (link.name.toLowerCase().includes(query)) {
+                                    directLinks.push({ ...link, category: sub.title || category.title, icon: sub.icon || category.icon, color: category.iconColor });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+
+            // Render Results
+            gridContainer.innerHTML = '';
+
+            // 1. Direct Links Section
+            if (directLinks.length > 0) {
+                const label = document.createElement('h3');
+                label.className = 'col-span-full text-xl font-bold text-white mb-4 border-b border-white/10 pb-2 flex items-center gap-2';
+                label.innerHTML = '<i class="fas fa-bolt text-yellow-400"></i> Direct Results';
+                gridContainer.appendChild(label);
+
+                const linkGrid = document.createElement('div');
+                linkGrid.className = 'col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8';
+
+                // Limit to top 15 direct results to prevent lag if query is "a"
+                const displayLinks = directLinks.slice(0, 15);
+
+                displayLinks.forEach(link => {
+                    const linkCard = document.createElement('a');
+                    linkCard.href = link.url;
+                    linkCard.target = '_blank';
+                    linkCard.className = 'flex items-center p-4 rounded-xl bg-gray-800/60 backdrop-blur-md border border-white/10 hover:bg-gray-700/80 transition-all hover:border-blue-500/50 group shadow-lg';
+                    linkCard.innerHTML = `
+                        <div class="w-10 h-10 rounded-full bg-gray-700/50 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform border border-white/5">
+                            <i class="${link.icon || 'fas fa-link'} ${link.color || 'text-blue-400'}"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-bold text-white group-hover:text-blue-300 truncate">${link.name}</h4>
+                            <p class="text-xs text-gray-400 truncate">${link.category}</p>
+                        </div>
+                        <i class="fas fa-external-link-alt ml-auto text-gray-500 group-hover:text-white pl-2"></i>
+                    `;
+                    linkGrid.appendChild(linkCard);
+                });
+                gridContainer.appendChild(linkGrid);
+
+                if (directLinks.length > 15) {
+                    const more = document.createElement('p');
+                    more.className = 'col-span-full text-center text-gray-500 text-sm mb-8';
+                    more.textContent = `...and ${directLinks.length - 15} more links. Keep typing to refine.`;
+                    gridContainer.appendChild(more);
+                }
+            }
+
+            // 2. Categories Section
+            if (filteredCategories.length > 0) {
+                const label = document.createElement('h3');
+                label.className = 'col-span-full text-xl font-bold text-white mb-4 mt-2 border-b border-white/10 pb-2 flex items-center gap-2';
+                label.innerHTML = '<i class="fas fa-folder-open text-blue-400"></i> Categories';
+                gridContainer.appendChild(label);
+
+                filteredCategories.forEach(cat => {
+                    const card = document.createElement('div');
+                    // Glassmorphism Card Style (Reused)
+                    card.className = 'card rounded-2xl p-6 cursor-pointer group transition-all duration-300 flex flex-col items-center justify-center text-center h-64 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-blue-500/20 relative overflow-hidden ring-1 ring-white/5';
+                    card.onclick = () => openModal(cat);
+
+                    // Visuals
+                    const shine = document.createElement('div');
+                    shine.className = 'absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none';
+                    card.appendChild(shine);
+
+                    const glow = document.createElement('div');
+                    glow.className = 'absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500 -z-10';
+                    card.appendChild(glow);
+
+                    // Icon
+                    const colorMap = { 'text-pink-400': 'from-pink-500 to-pink-700 shadow-pink-500/40 ring-pink-400/30', 'text-pink-500': 'from-pink-500 to-pink-700 shadow-pink-500/40 ring-pink-400/30', 'text-rose-400': 'from-rose-500 to-rose-700 shadow-rose-500/40 ring-rose-400/30', 'text-red-400': 'from-red-500 to-red-700 shadow-red-500/40 ring-red-400/30', 'text-red-500': 'from-red-500 to-red-700 shadow-red-500/40 ring-red-400/30', 'text-red-600': 'from-red-600 to-red-800 shadow-red-500/40 ring-red-400/30', 'text-orange-400': 'from-orange-500 to-orange-700 shadow-orange-500/40 ring-orange-400/30', 'text-orange-300': 'from-orange-400 to-orange-600 shadow-orange-500/40 ring-orange-400/30', 'text-amber-400': 'from-amber-500 to-amber-700 shadow-amber-500/40 ring-amber-400/30', 'text-yellow-400': 'from-yellow-400 to-yellow-600 shadow-yellow-500/40 ring-yellow-400/30', 'text-yellow-500': 'from-yellow-500 to-yellow-700 shadow-yellow-500/40 ring-yellow-400/30', 'text-yellow-600': 'from-yellow-500 to-yellow-700 shadow-yellow-500/40 ring-yellow-400/30', 'text-lime-400': 'from-lime-500 to-lime-700 shadow-lime-500/40 ring-lime-400/30', 'text-green-400': 'from-green-500 to-green-700 shadow-green-500/40 ring-green-400/30', 'text-green-500': 'from-green-500 to-green-700 shadow-green-500/40 ring-green-400/30', 'text-green-600': 'from-green-600 to-green-800 shadow-green-500/40 ring-green-400/30', 'text-emerald-400': 'from-emerald-500 to-emerald-700 shadow-emerald-500/40 ring-emerald-400/30', 'text-teal-400': 'from-teal-500 to-teal-700 shadow-teal-500/40 ring-teal-400/30', 'text-cyan-400': 'from-cyan-500 to-cyan-700 shadow-cyan-500/40 ring-cyan-400/30', 'text-sky-400': 'from-sky-500 to-sky-700 shadow-sky-500/40 ring-sky-400/30', 'text-blue-400': 'from-blue-500 to-blue-700 shadow-blue-500/40 ring-blue-400/30', 'text-blue-500': 'from-blue-500 to-blue-700 shadow-blue-500/40 ring-blue-400/30', 'text-indigo-400': 'from-indigo-500 to-indigo-700 shadow-indigo-500/40 ring-indigo-400/30', 'text-purple-400': 'from-purple-500 to-purple-700 shadow-purple-500/40 ring-purple-400/30', 'text-fuchsia-400': 'from-fuchsia-500 to-fuchsia-700 shadow-fuchsia-500/40 ring-fuchsia-400/30', 'text-gray-400': 'from-gray-600 to-gray-800 shadow-gray-500/40 ring-gray-400/30', 'text-slate-400': 'from-slate-600 to-slate-800 shadow-slate-500/40 ring-slate-400/30' };
+                    let gradientClass = colorMap[cat.iconColor] || 'from-blue-500 to-blue-700 shadow-blue-500/40 ring-blue-400/30';
+
+                    const iconDiv = document.createElement('div');
+                    iconDiv.className = `w-20 h-20 rounded-2xl mb-5 flex items-center justify-center bg-gradient-to-br ${gradientClass} shadow-xl ring-1 group-hover:scale-110 transition-all duration-300 z-10 group-hover:-translate-y-2 group-hover:rotate-3 relative`;
+                    const innerShine = document.createElement('div');
+                    innerShine.className = 'absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/20 to-transparent rounded-t-2xl pointer-events-none';
+                    iconDiv.appendChild(innerShine);
+                    const i = document.createElement('i');
+                    i.className = `${cat.icon} text-4xl text-white drop-shadow-lg`;
+                    iconDiv.appendChild(i);
+                    card.appendChild(iconDiv);
+
+                    const title = document.createElement('h3');
+                    title.className = 'text-lg font-bold text-white group-hover:text-blue-200 transition-all duration-300 z-10 group-hover:-translate-y-1 tracking-wide';
+                    title.textContent = cat.title;
+                    card.appendChild(title);
+
+                    const count = document.createElement('span');
+                    count.className = 'text-xs font-medium text-gray-400 mt-2 z-10 transition-opacity duration-300 group-hover:opacity-0 bg-gray-800/50 px-3 py-1 rounded-full border border-white/5';
+                    let totalLinks = (cat.links ? cat.links.length : 0);
+                    if (cat.subcategories) cat.subcategories.forEach(sub => totalLinks += (sub.links ? sub.links.length : 0));
+                    count.textContent = `${totalLinks} Links`;
+                    card.appendChild(count);
+
+                    const desc = document.createElement('p');
+                    desc.className = 'absolute bottom-0 left-0 right-0 p-4 text-sm font-medium text-white bg-black/80 backdrop-blur-md transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-center border-t border-white/10 z-20';
+                    desc.textContent = cat.description || "Explore this category";
+                    card.appendChild(desc);
+
+                    gridContainer.appendChild(card);
+                });
+            }
+
+            if (directLinks.length === 0 && filteredCategories.length === 0) {
+                gridContainer.innerHTML = '<div class="col-span-full text-center text-gray-400 py-12 text-xl backdrop-blur-sm bg-white/5 rounded-2xl border border-white/5">No results found, bhai. Try something else?</div>';
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
